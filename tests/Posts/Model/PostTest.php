@@ -29,18 +29,18 @@ class PostTest extends TestCase
         return [
             [
                 Post::builder()
-                    ->setMedia(new FileReference())
+                    ->setMedia(FileReference::url(''))
                     ->setDescription('some description', $tagProcessor->reveal())
             ],
             [
                 Post::builder()
-                    ->setAuthor(new Author())
+                    ->setAuthor(new Author(''))
                     ->setDescription('some description', $tagProcessor->reveal())
             ],
             [
                 Post::builder()
-                    ->setAuthor(new Author())
-                    ->setMedia(new FileReference())
+                    ->setAuthor(new Author(''))
+                    ->setMedia(FileReference::url(''))
             ],
         ];
     }

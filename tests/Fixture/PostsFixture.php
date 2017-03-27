@@ -36,7 +36,7 @@ class PostsFixture extends Fixture
             $request = new AddPost();
             $request->description = $this->randomDescriptionWithHashTags();
             $request->author = new Author($authors[mt_rand(0, 19)]);
-            $request->media = FileReference::url($photos[mt_rand(0, 2)]);
+            $request->media = $photos[mt_rand(0, 2)];
 
             yield $request;
         }
