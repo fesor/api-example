@@ -54,6 +54,8 @@ doctrine:
         auto_generate_proxy_classes: '%kernel.debug%'
         entity_managers:
             default:
+                hydrators:
+                    NestedArrayHydrator: Example\Common\Doctrine\NestedArrayHydrator
                 naming_strategy: doctrine.orm.naming_strategy.underscore
                 mappings:
                     posts:
