@@ -51,16 +51,7 @@ class PostsFixture extends Fixture
     {
         $description = 'Some random description ';
 
-        $hashtags = [
-            '#love',
-            '#instagood',
-            '#me',
-            '#tbt',
-            '#cute',
-            '#follow',
-            '#followme',
-            '#photooftheday',
-        ];
+        $hashtags = TagsFixture::HASHTAGS;
         $total = count($hashtags) - 1;
 
         if (mt_rand(0, 1)) {
