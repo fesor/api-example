@@ -11,5 +11,11 @@ class Author
 {
     /**
      * @ORM\Column(type="guid")
-     */public $userId;
+     */
+    public $userId;
+
+    public function __construct(string $userId)
+    {
+        $this->userId = $userId;
+    }
 }

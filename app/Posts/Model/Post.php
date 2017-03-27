@@ -38,7 +38,7 @@ class Post
 
     /**
      * @var ArrayCollection|Tag[]
-     * @ORM\ManyToMany(targetEntity="Tag")
+     * @ORM\ManyToMany(targetEntity="Tag", cascade={"persist"})
      */
     private $tags;
 

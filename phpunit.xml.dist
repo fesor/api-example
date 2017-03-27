@@ -15,6 +15,9 @@
     <testsuites>
         <testsuite name="Project Test Suite">
             <directory>tests</directory>
+            <exclude>
+                <directory>Fixture</directory>
+            </exclude>
         </testsuite>
     </testsuites>
 
