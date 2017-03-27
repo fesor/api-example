@@ -2,7 +2,7 @@
 
 namespace Example\GraphQL\Type;
 
-use Example\GraphQL\Query\AuthorQuery;
+use Example\GraphQL\Field\Author;
 use Example\GraphQL\Type\Scalar\UuidType;
 use Youshido\GraphQL\Type\Object\AbstractObjectType;
 use Youshido\GraphQL\Type\Scalar\IntType;
@@ -16,7 +16,7 @@ class PostType extends AbstractObjectType
             'id'      => new UuidType(),
             'likes' => new IntType(),
             'description' => new StringType(),
-            'author' => new AuthorQuery(),
+            'author' => new Author(),
             'location' => new LocationType(),
         ]);
     }

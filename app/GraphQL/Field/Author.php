@@ -1,13 +1,13 @@
 <?php
 
-namespace Example\GraphQL\Query;
+namespace Example\GraphQL\Field;
 
 use Example\GraphQL\Resolver\UserResolver;
 use Example\GraphQL\Type\UserType;
 use Youshido\GraphQL\Execution\ResolveInfo;
 use Youshido\GraphQL\Field\AbstractField;
 
-class AuthorQuery extends AbstractField
+class Author extends AbstractField
 {
     public function getName()
     {

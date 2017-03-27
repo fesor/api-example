@@ -1,6 +1,6 @@
 <?php
 
-namespace Example\GraphQL\Query;
+namespace Example\GraphQL\Field;
 
 use Example\GraphQL\Resolver\PostResolver;
 use Example\GraphQL\Type\PostType;
@@ -11,7 +11,7 @@ use Youshido\GraphQL\Execution\ResolveInfo;
 use Youshido\GraphQL\Field\AbstractField;
 use Youshido\GraphQL\Type\Scalar\StringType;
 
-class PostDetailsQuery extends AbstractField
+class Post extends AbstractField
 {
     public function getType()
     {
