@@ -11,8 +11,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Tag
 {
     /**
-     * @var string
+     * @var int
      * @ORM\Id()
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue()
+     */
+    private $id;
+
+    /**
+     * @var string
      * @ORM\Column(type="string")
      */
     private $tag;

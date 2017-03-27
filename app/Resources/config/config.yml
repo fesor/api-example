@@ -52,8 +52,18 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        entity_managers:
+            default:
+                naming_strategy: doctrine.orm.naming_strategy.underscore
+                mappings:
+                    posts:
+                        type: annotation
+                        dir: '%kernel.root_dir%/Posts/Model'
+                        prefix: Example\Posts\Model
+                    uploads:
+                        type: annotation
+                        dir: '%kernel.root_dir%/Uploads'
+                        prefix: Example\Uploads
 
 
 # Swiftmailer Configuration

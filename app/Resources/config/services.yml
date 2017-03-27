@@ -1,2 +1,3 @@
 imports:
+    - { resource: ../../Common/services.php }
     - { resource: ../../Posts/services.php }
