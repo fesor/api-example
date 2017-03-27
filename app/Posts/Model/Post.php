@@ -42,6 +42,12 @@ class Post
      */
     private $tags;
 
+    /**
+     * @var Location
+     * @ORM\Embedded(class="Example\Posts\Model\Location")
+     */
+    private $location;
+
     public static function builder(): PostBuilder
     {
         return new PostBuilder();
@@ -54,5 +60,6 @@ class Post
         $this->tags = new ArrayCollection($builder->tags());
         $this->media = $builder->media();
         $this->author = $builder->author();
+        $this->location = $builder->location();
     }
 }

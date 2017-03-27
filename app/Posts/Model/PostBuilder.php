@@ -27,6 +27,11 @@ class PostBuilder
     private $tags;
 
     /**
+     * @var Location
+     */
+    private $location;
+
+    /**
      * @param string $description
      * @return $this
      */
@@ -57,6 +62,12 @@ class PostBuilder
         return $this;
     }
 
+    public function setLocation(Location $location)
+    {
+        $this->location = $location;
+        return $this;
+    }
+
     public function build(): Post
     {
         return new Post($this);
@@ -80,5 +91,10 @@ class PostBuilder
     public function tags(): array
     {
         return $this->tags;
+    }
+
+    public function location(): ?Location
+    {
+        return $this->location;
     }
 }

@@ -10,6 +10,7 @@ RUN docker-php-ext-install \
         mbstring \
         zip \
         opcache \
+        bcmath \
         pdo pdo_pgsql
 
 RUN yes | pecl install apcu xdebug \

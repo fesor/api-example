@@ -1,3 +1,7 @@
 #app:
 #    resource: '@AppBundle/Controller/'
 #    type: annotation
+
+graphql:
+    resource: "@GraphQLBundle/Controller/"
+    prefix: '/api'

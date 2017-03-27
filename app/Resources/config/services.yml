@@ -1,3 +1,4 @@
 imports:
     - { resource: ../../Common/services.php }
     - { resource: ../../Posts/services.php }
+    - { resource: ../../GraphQL/services.php }

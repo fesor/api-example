@@ -1,0 +1,9 @@
+{
+    "methodCalls": [
+        {
+            "class": "\\Youshido\\GraphQL\\Execution\\Container\\ContainerInterface",
+            "method": "get",
+            "position": 0
+        }
+    ]
+}

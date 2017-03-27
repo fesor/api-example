@@ -78,3 +78,6 @@ swiftmailer:
 
 doctrine_migrations:
     dir_name: "%kernel.root_dir%/Resources/migrations"
+
+graphql:
+    schema_class: Example\GraphQL\Schema

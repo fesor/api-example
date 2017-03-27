@@ -18,6 +18,6 @@ class AddPost
 
         $this->author = new Author($user->id);
         $this->description = $request->get('description');
-        $this->media = new FileReference($request->get('media'));
+        $this->media = FileReference::url($request->get('media'));
     }
 }
