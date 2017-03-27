@@ -1,0 +1,20 @@
+version: "2"
+
+services:
+  app:
+    volumes:
+      - "../.:/app"
+
+  nginx:
+    environment:
+      - VIRTUAL_HOST=apiexample.docker
+      - VIRTUAL_PORT=80
+    volumes:
+      - "./nginx/config/directives:/etc/nginx/directives"
+      - "./nginx/config/locations:/etc/nginx/locations"
+
+  maildev:
+    image: djfarrelly/maildev
+    environment:
+      - VIRTUAL_HOST=maildev.apiexample.docker
+      - VIRTUAL_PORT=80

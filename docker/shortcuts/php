@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+docker-compose run --user $(id -u) --no-deps \
+            -e PHP_IDE_CONFIG="serverName=_" --rm app \
+            php -d "xdebug.remote_host=$REMOTE_DEBUG_IP" \
+            $@

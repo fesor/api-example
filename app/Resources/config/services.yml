@@ -1,0 +1,2 @@
+imports:
+    - { resource: ../../Posts/services.php }

@@ -1,0 +1,25 @@
+version: "2"
+
+services:
+  app:
+    image: app/php:${DOCKER_TAG}
+    environment:
+      - SYMFONY_ENV
+      - SYMFONY__DB_HOST=${DB_HOST}
+      - SYMFONY__DB_NAME=${DB_NAME}
+      - SYMFONY__DB_USER=${DB_USER}
+      - SYMFONY__DB_PASS=${DB_PASS}
+      - SYMFONY__SECRET=${SECRET}
+      - SYMFONY__MAILER_HOST=${MAILER_HOST}
+      - SYMFONY__MAILER_PORT=${MAILER_PORT}
+      - SYMFONY__MAILER_USER=${MAILER_USER}
+      - SYMFONY__MAILER_PASS=${MAILER_PASS}
+      - SYMFONY__MAILER_ENCRYPTION=${MAILER_ENCRYPTION}
+
+  database:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - PGPASSWORD=${DB_PASS}

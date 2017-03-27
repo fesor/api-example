@@ -1,0 +1,4 @@
+/phpunit.xml
+/var/*
+/vendor/
+/docker/nginx/web/bundles/
