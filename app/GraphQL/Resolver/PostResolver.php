@@ -17,6 +17,16 @@ class PostResolver
         $this->em = $em;
     }
 
+    public function resolveFeed()
+    {
+        $qb = $this->em->createQueryBuilder()
+            ->select('p')
+            ->from(Post::class, 'p')
+            ->setMaxResults(20);
+
+        return $qb->getQuery()->getResult('NestedArrayHydrator');
+    }
+
     public function resolvePostDetails($value, array $args, ResolveInfo $info)
     {
         $qb = $this->em->createQueryBuilder()
