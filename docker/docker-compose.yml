@@ -16,6 +16,10 @@ services:
       - SYMFONY__MAILER_PASS=${MAILER_PASS}
       - SYMFONY__MAILER_ENCRYPTION=${MAILER_ENCRYPTION}
 
+  imaginary:
+    image: h2non/imaginary
+    command: ['-enable-url-source']
+
   database:
     image: postgres:9.6
     environment:

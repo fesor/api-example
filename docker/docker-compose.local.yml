@@ -12,6 +12,7 @@ services:
     volumes:
       - "./nginx/config/directives:/etc/nginx/directives"
       - "./nginx/config/locations:/etc/nginx/locations"
+      - "./nginx/web:/srv"
 
   maildev:
     image: djfarrelly/maildev
