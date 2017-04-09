@@ -20,17 +20,24 @@ class NestedArrayHydrator extends ArrayHydrator
         $aggregated = [];
 
         foreach ($row as $key => $value) {
-            if (strpos($key, '.') === false) {
-                continue;
-            }
-
-            $path = explode('.', $key);
-            $aggregated[$path[0]][$path[1]] = $value;
-            unset($row[$key]);
+            $this->split($key, $value, $aggregated);
         }
 
+        $row = [];
         foreach ($aggregated as $key => $aggregatedValue) {
             $row[$key] = $aggregatedValue;
         }
+    }
+
+    private function split($key, &$value, &$aggregated)
+    {
+        if (strpos($key, '.') === false) {
+            $aggregated[$key] = $value;
+
+            return;
+        }
+
+        $path = explode('.', $key, 2);
+        $this->split($path[1], $value, $aggregated[$path[0]]);
     }
 }

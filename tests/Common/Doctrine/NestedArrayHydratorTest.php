@@ -31,6 +31,23 @@ class NestedArrayHydratorTest extends TestCase
         ], $actualRow);
     }
 
+    public function testItShouldSupportUnlimitedLevelsOfNesting()
+    {
+        $row = [
+            'foo.bar.baz' => 'value'
+        ];
+
+        $actualRow = $this->postProcessRow($row);
+
+        self::assertEquals([
+            'foo' => [
+                'bar' => [
+                    'baz' => 'value'
+                ]
+            ]
+        ], $actualRow);
+    }
+
     private function postProcessRow($row)
     {
         $hydrator = (new ClassReflection(NestedArrayHydrator::class))
