@@ -3,10 +3,9 @@
 namespace Example\GraphQL\Resolver;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Query;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use Example\Common\Doctrine\NestedArrayHydrator;
 use Example\Posts\Model\Post;
-use Ramsey\Uuid\Uuid;
-use Youshido\GraphQL\Execution\ResolveInfo;
 
 class PostResolver
 {
@@ -19,28 +18,32 @@ class PostResolver
 
     public function resolveFeed()
     {
-        $qb = $this->em->createQueryBuilder()
+        $query = $this->em->createQueryBuilder()
             ->select('p')
             ->from(Post::class, 'p')
-            ->setMaxResults(20);
+            ->setMaxResults(20)
+            ->getQuery()
+            ->setHydrationMode(NestedArrayHydrator::NESTED_ARRAY);
 
-        return $qb->getQuery()->getResult('NestedArrayHydrator');
+
+        return new Paginator($query);
     }
 
-    public function resolvePostDetails($value, array $args, ResolveInfo $info)
+    public function resolvePostDetails(string $id)
     {
         $qb = $this->em->createQueryBuilder()
             ->select('p')
             ->from(Post::class, 'p')
             ->where('p.id = :id')
-            ->setParameter('id', $args['id']);
+            ->setParameter('id', $id);
 
-        if ($info->getFieldAST('author')) {
-            // todo: add join
-        }
-
-        $result = $qb->getQuery()->getOneOrNullResult('NestedArrayHydrator');
+        $result = $qb->getQuery()->getOneOrNullResult(NestedArrayHydrator::NESTED_ARRAY);
 
         return $result;
+    }
+
+    public function resolvePostDetailsWithAuthor(string $id)
+    {
+        return $this->resolvePostDetails($id);
     }
 }

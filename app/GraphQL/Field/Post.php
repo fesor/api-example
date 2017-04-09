@@ -29,6 +29,11 @@ class Post extends AbstractField
 
     public function resolve($value, array $args, ResolveInfo $info)
     {
-        return $info->getContainer()->get(PostResolver::class)->resolvePostDetails($value, $args, $info);
+        $postResolver = $info->getContainer()->get(PostResolver::class);
+        if ($info->getFieldAST('author')) {
+            $postResolver->resolvePostDetailsWithAuthor($args['id']);
+        }
+
+        return $postResolver->resolvePostDetails($args['id']);
     }
 }

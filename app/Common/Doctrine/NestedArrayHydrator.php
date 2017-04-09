@@ -6,6 +6,8 @@ use Doctrine\ORM\Internal\Hydration\ArrayHydrator;
 
 class NestedArrayHydrator extends ArrayHydrator
 {
+    const NESTED_ARRAY = 'NestedArrayHydrator';
+
     protected function hydrateRowData(array $row, array &$result)
     {
         parent::hydrateRowData($row, $result);

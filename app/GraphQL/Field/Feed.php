@@ -3,24 +3,27 @@
 namespace Example\GraphQL\Field;
 
 use Example\GraphQL\Resolver\PostResolver;
+use Example\GraphQL\Type\PaginatedList;
 use Example\GraphQL\Type\PostType;
 use Youshido\GraphQL\Execution\ResolveInfo;
 use Youshido\GraphQL\Field\AbstractField;
-use Youshido\GraphQL\Type\AbstractType;
-use Youshido\GraphQL\Type\ListType\ListType;
-use Youshido\GraphQL\Type\Object\AbstractObjectType;
 
 class Feed extends AbstractField
 {
     public function getType()
     {
-        return new ListType(
-            new PostType()
-        );
+        return new PaginatedList(new PostType());
     }
 
     public function resolve($value, array $args, ResolveInfo $info)
     {
-        return $info->getContainer()->get(PostResolver::class)->resolveFeed();
+        $feed = $info->getContainer()->get(PostResolver::class)->resolveFeed();
+
+        return [
+            'items' => $feed,
+            'pageInfo' => [
+                'total' => $feed->count(),
+            ]
+        ];
     }
 }
